@@ -1,0 +1,43 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.example.shaikhbro.moneytracker.fragment.MainMenuFragment">
+
+    <TextView
+        android:id="@+id/budget_id"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/hello_blank_fragment"
+        android:layout_marginTop="40dp"
+        android:textColor="@android:color/holo_green_dark"
+        android:textSize="32dp"
+        android:textStyle="bold"
+        android:layout_gravity="center"
+        />
+
+    <Button
+        android:id="@+id/add_money_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/add_money_text"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:layout_marginTop="60dp"/>
+    <Button
+        android:id="@+id/add_expense_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/add_expense_text"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:layout_marginTop="15dp"/>
+    <Button
+        android:id="@+id/summary_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/show_summary_text"
+        android:layout_gravity="center"
+        android:layout_marginTop="15dp"/>
+</LinearLayout>

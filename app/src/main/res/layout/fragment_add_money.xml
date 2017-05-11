@@ -1,0 +1,37 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.example.shaikhbro.moneytracker.fragment.AddMoneyFragment">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/enter_amount_text"
+        android:layout_gravity="center_horizontal"
+        android:gravity="center"
+        android:textSize="25dp"
+        android:textStyle="bold"
+        android:textColor="@android:color/black"/>
+    
+    <EditText
+        android:id="@+id/add_amount"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="30dp"
+        android:layout_gravity="center_horizontal"
+        android:gravity="center"
+        android:hint="5000"
+        style="@style/Widget.AppCompat.EditText"
+        android:text="0"
+        android:inputType="number"/>
+
+    <Button
+        android:id="@+id/add_amount_save_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="30dp"
+        android:layout_gravity="center_horizontal"
+        android:text="@string/save_text"/>
+</LinearLayout>
