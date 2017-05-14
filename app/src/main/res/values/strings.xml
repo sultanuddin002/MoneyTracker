@@ -9,6 +9,37 @@
     <string name="show_summary_text">Show Summary</string>
     <string name="enter_amount_text">Please Enter amount in your wallet</string>
     <string name="save_text">SAVE</string>
-
-
+    <string name="enter_expense_amount_text">Please select the correct category for your expense</string>
+    <string name="expense_cat_text">Expenses</string>
+    <string-array name="category_list">
+        <item>House rent</item>
+        <item>Car payment</item>
+        <item>Car fuel</item>
+        <item>Car maintenance/repairs</item>
+        <item>Car registration fees</item>
+        <item>Electric bills</item>
+        <item>Water bills</item>
+        <item>Gas bills</item>
+        <item>Phone bills</item>
+        <item>Internet service bills</item>
+        <item>Cable bills</item>
+        <item>Newspaper bills</item>
+        <item>Water cans bills</item>
+        <item>Groceries</item>
+        <item>Dining out</item>
+        <item>Personal clothing</item>
+        <item>Hair cut</item>
+        <item>Medical expenses</item>
+        <item>Gym membership</item>
+        <item>Vacation</item>
+        <item>Charitable givings</item>
+        <item>Entertainment</item>
+        <item>Gifts</item>
+    </string-array>
+    <string name="amount_for_expense">Enter amount for expense</string>
+    <string name="select_expense_text">Select Expense</string>
+    <string name="money_status">MONEY STATUS</string>
+    <string name="summary_text">Money flow Summary</string>
+    <string name="sample_cat_text">Gym Membership</string>
+    <string name="total_amount_txt">TOTAL:</string>
 </resources>

@@ -33,6 +33,8 @@ public class MainMenuFragment extends Fragment {
 
         View view = inflater.inflate(R.layout.fragment_main_menu, container, false);
         addMoneyBtn = (Button) view.findViewById(R.id.add_money_btn);
+        addExpenseBtn = (Button) view.findViewById(R.id.add_expense_btn);
+        showSummaryBtn = (Button) view.findViewById(R.id.summary_btn);
         amountText = (TextView) view.findViewById(R.id.budget_id);
         dbCreate = new DBCreate();
         dbCreate.createDB(getContext());
@@ -44,6 +46,19 @@ public class MainMenuFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 getFragmentManager().beginTransaction().replace(R.id.fragment_placeholder, new AddMoneyFragment()).commit();
+            }
+        });
+        addExpenseBtn.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View view) {
+                getFragmentManager().beginTransaction().replace(R.id.fragment_placeholder, new AddExpenseFragment()).commit();
+            }
+        });
+        showSummaryBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                getFragmentManager().beginTransaction().replace(R.id.fragment_placeholder, new SummaryFragment()).commit();
             }
         });
         return view;

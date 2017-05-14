@@ -13,7 +13,9 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.shaikhbro.moneytracker.R;
+import com.example.shaikhbro.moneytracker.Utils.CurrentTimeStamp;
 import com.example.shaikhbro.moneytracker.Utils.DBCreate;
+import com.example.shaikhbro.moneytracker.Utils.WalletSummary;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -45,9 +47,17 @@ public class AddMoneyFragment extends Fragment {
                 if (!(amount_value.getText().toString().matches(""))) {
                     amount = new Integer((amount_value).getText().toString()).intValue();
                 }
-                if ( amount != 0) {
+                if (amount != 0) {
                     dbCreate = new DBCreate();
                     dbCreate.saveAmount(getContext(), amount);
+                    // when the money is stored successfully, add date,money which is add and current money in the wallet in the Walletsummary Object inside the database
+                    WalletSummary walletSummary = new WalletSummary();
+                    walletSummary.setDate(new CurrentTimeStamp().getCurrentTimeStamp());
+                    walletSummary.setCurrentMoney(amount);
+                    walletSummary.setMoneyStatus("Money Added");
+                    walletSummary.setTotalMoney(dbCreate.getAmount(getContext()));
+                    // save the WalletSummary object in DB
+                    dbCreate.saveWalletSummary(getContext(), walletSummary);
                     Toast.makeText(getContext(), "your Money is added successfully", Toast.LENGTH_LONG).show();
                     new Handler().postDelayed(new Runnable() {
                         @Override

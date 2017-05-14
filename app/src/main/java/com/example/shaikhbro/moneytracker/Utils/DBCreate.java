@@ -3,6 +3,7 @@ package com.example.shaikhbro.moneytracker.Utils;
 import android.content.Context;
 import android.icu.math.BigDecimal;
 
+import com.example.shaikhbro.moneytracker.fragment.SummaryFragment;
 import com.snappydb.DB;
 import com.snappydb.DBFactory;
 import com.snappydb.SnappydbException;
@@ -13,7 +14,7 @@ import com.snappydb.SnappydbException;
 public class DBCreate {
 
     private DB snappyDB;
-    final String USER_ONE = "USER_ONE";
+    final String USER_ONE = "USER_FIVE";
 
     final String DB_NAME = "MONEY_TRACKER";
 
@@ -42,6 +43,7 @@ public class DBCreate {
                 snappyDB.putInt(USER_ONE, amount + snappyDB.getInt(USER_ONE));
             } else {
                 snappyDB.putInt(USER_ONE, amount);
+                snappyDB.close();
             }
 
         } catch (SnappydbException e) {
@@ -54,9 +56,9 @@ public class DBCreate {
         try {
             snappyDB = DBFactory.open(context, DB_NAME);
             if (snappyDB.exists(USER_ONE)) {
-                return snappyDB.getInt(USER_ONE);
+                amount = snappyDB.getInt(USER_ONE);
+                return amount;
             }
-
 
         } catch (SnappydbException e) {
             e.printStackTrace();
@@ -75,24 +77,47 @@ public class DBCreate {
         return isExists;
     }
 
-    public int subtractAmount(Context context, int amountSubtract) {
+    public void saveExpense(Context context, int amountSubtract) {
+        // WORKING FINE WHEN NEW USER KEY IS MADE
         int currentAmount = getAmount(context);
-
         try {
-            snappyDB = DBFactory.open(context);
+
+            snappyDB = DBFactory.open(context, DB_NAME);
             if (snappyDB.exists(USER_ONE)) {
-                if (currentAmount <= 0) {
-                    currentAmount = currentAmount - amountSubtract;
-                    return currentAmount;
-                } else {
-                    currentAmount = 0;
-                    return currentAmount;
+                if (currentAmount >= amountSubtract) {
+                    snappyDB.putInt(USER_ONE, currentAmount - amountSubtract);
+                    snappyDB.close();
                 }
             }
         } catch (SnappydbException e) {
             e.printStackTrace();
-        }
-        return currentAmount;
 
+        }
+
+
+    }
+
+    public void saveWalletSummary(Context context, WalletSummary walletSummary) {
+        try {
+            snappyDB = DBFactory.open(context);
+            if (snappyDB.exists(USER_ONE)) {
+                snappyDB.put(USER_ONE, walletSummary);
+            }
+        } catch (SnappydbException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public WalletSummary getWalletSummary(Context context) {
+        WalletSummary walletSummary = new WalletSummary();
+        try {
+            snappyDB = DBFactory.open(context);
+            if (snappyDB.exists(USER_ONE)) {
+                walletSummary = snappyDB.getObject(USER_ONE, WalletSummary.class);
+            }
+        } catch (SnappydbException e) {
+            e.printStackTrace();
+        }
+        return walletSummary;
     }
 }
